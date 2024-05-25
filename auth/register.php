@@ -1,25 +1,27 @@
 <?php
   include_once "app/User.php";
   include_once "guest.php";
-
+  
   if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $successMessage = '';
+    $errorMessage = '';
+    // print_r($_POST);
     $user = new User;
+    $user->name = $_POST['name'];
     $user->email = $_POST['email'];
     $user->password = $_POST['password'];
 
-    if($user->login()){
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['user_name'] = $user->name;
-      $_SESSION['user_email'] = $user->email;
-
-      header('Location: dashboard.php');
+    if($user->register()){
+      return $successMessage =  "registered successfully";
     }else{
-      echo "unable to login";
+       return $errorMessage = "unable to register";
     }
 
 
   }
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,7 +38,14 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-6">
-                <form action="login.php" method="POST">
+                <p class="text-danger"><?php $errorMessage ?></p>
+                <form action="register.php" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" >
+                        
+                    </div>
+
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -47,7 +56,7 @@
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="register.php" class="btn btn-dark">Register</a>
+                    <a href="login.php" class="btn btn-dark">Login</a>
                 </form>
             </div>
         </div>

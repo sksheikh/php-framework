@@ -1,4 +1,6 @@
 <?php
+namespace App\Config;
+
 class Database{
     private $host = 'localhost';
     private $db_name = 'php_framework';

@@ -1,5 +1,7 @@
 <?php
-include_once "Database.php";
+namespace App\Models;
+
+use App\Config\Database;
 
 class User extends Database{
     private $table_name = "users";

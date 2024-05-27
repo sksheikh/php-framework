@@ -1,27 +1,3 @@
-<?php
-  include_once "app/User.php";
-  include_once "guest.php";
-  
-  if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $successMessage = '';
-    $errorMessage = '';
-    // print_r($_POST);
-    $user = new User;
-    $user->name = $_POST['name'];
-    $user->email = $_POST['email'];
-    $user->password = $_POST['password'];
-
-    if($user->register()){
-      return $successMessage =  "registered successfully";
-    }else{
-       return $errorMessage = "unable to register";
-    }
-
-
-  }
-?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -39,7 +15,7 @@
         <div class="row justify-content-center mt-4">
             <div class="col-md-6">
                 <p class="text-danger"><?php $errorMessage ?></p>
-                <form action="register.php" method="POST">
+                <form action="/submit-register" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" id="name" >

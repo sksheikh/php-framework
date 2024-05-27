@@ -1,25 +1,3 @@
-<?php
-  include_once "app/User.php";
-  include_once "guest.php";
-
-  if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $user = new User;
-    $user->email = $_POST['email'];
-    $user->password = $_POST['password'];
-
-    if($user->login()){
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['user_name'] = $user->name;
-      $_SESSION['user_email'] = $user->email;
-
-      header('Location: dashboard.php');
-    }else{
-      echo "unable to login";
-    }
-
-
-  }
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,7 +14,7 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-6">
-                <form action="login.php" method="POST">
+                <form action="/submit-login" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

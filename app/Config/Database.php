@@ -1,11 +1,14 @@
 <?php
 namespace App\Config;
 
+use PDO;
+use PDOException;
+
 class Database{
     private $host = 'localhost';
     private $db_name = 'php_framework';
     private $username = 'root';
-    private $password = 'Password@123';
+    private $password = '';
     public $conn;
 
     public function __construct()

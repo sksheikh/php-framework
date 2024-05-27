@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Config\Database;
+use PDO;
 
 class User extends Database{
     private $table_name = "users";

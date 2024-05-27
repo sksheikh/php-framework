@@ -1,7 +1,3 @@
-<?php
-    include_once "auth.php";
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,7 +16,7 @@
         <p>Name: <?php echo $_SESSION['user_name'] ?></p>
         <p>Email: <?php echo $_SESSION['user_email'] ?></p>
 
-        <a href="logout.php" class="btn btn-dark">Logout</a>
+        <a href="/logout" class="btn btn-dark">Logout</a>
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

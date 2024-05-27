@@ -5,13 +5,13 @@ class DashboardController{
     
     public function index()
     {
-        echo "DashboardController is here";
+        require_once('pages/dashboard.php');
     }
 
     public function logout()
     {
       $_SESSION = [];
       session_destroy();
-      require('pages/login.php');
+      redirect('/login');
     }
 }

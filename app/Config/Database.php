@@ -8,7 +8,7 @@ class Database{
     private $host = 'localhost';
     private $db_name = 'php_framework';
     private $username = 'root';
-    private $password = '';
+    private $password = 'Password@123';
     public $conn;
 
     public function __construct()

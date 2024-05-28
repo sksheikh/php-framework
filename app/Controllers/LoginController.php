@@ -4,9 +4,16 @@ namespace App\Controllers;
 use App\Models\User;
 
 class LoginController{
+
     public function index()
     {
-        require('pages/login.php');
+        $user = new User();
+        // $data = $user->fetchData('select * from users');
+        $data = $user->fetchData('select * from users where id = 2');
+        
+        echo '<pre>';
+        print_r($data);
+        return view('auth.login');
     }
 
     public function login()
@@ -19,8 +26,8 @@ class LoginController{
             $_SESSION['user_id'] = $user->id;
             $_SESSION['user_name'] = $user->name;
             $_SESSION['user_email'] = $user->email;
-    
-            require('pages/dashboard.php');
+            // echo "ok";
+            redirect('dashboard');
         }else{
             echo "unable to login";
         }

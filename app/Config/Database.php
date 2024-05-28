@@ -8,7 +8,7 @@ class Database{
     private $host = 'localhost';
     private $db_name = 'php_framework';
     private $username = 'root';
-    private $password = '';
+    private $password = 'Password@123';
     public $conn;
 
     public function __construct()
@@ -21,8 +21,22 @@ class Database{
           $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
           echo "Connection failed: " . $e->getMessage();
-        }
+        }   
+    }
 
-        
+    public function fetchData($query, $params = [])
+    {
+      try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      } catch (PDOException $th) {
+        return false;
+      }
+    }
+
+    public function fetchSingle($query){
+      $stmt = $this->conn->query($query);
+      return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

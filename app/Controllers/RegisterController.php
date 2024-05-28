@@ -4,9 +4,10 @@ namespace App\Controllers;
 use App\Models\User;
 
 class RegisterController{
+
     public function index()
     {
-        require('pages/register.php');
+        return view('auth.register');
     }
 
     public function register()

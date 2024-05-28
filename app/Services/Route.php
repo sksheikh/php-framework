@@ -35,6 +35,11 @@ class Route{
             if($route['uri'] == $requestURI && $route['method'] == $requestMethod){
                 $controllerClass = self::$controllerNamespace.$route['controller'];
                 $action = $route['action'];
+                
+                foreach($route['middleware'] as $middleware){
+                    $middlewareClass = new $middleware();
+                    $middlewareClass->handle();
+                };
 
                 $controller = new $controllerClass();
                 $controller->$action();

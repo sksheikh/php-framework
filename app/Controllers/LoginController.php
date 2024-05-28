@@ -4,9 +4,10 @@ namespace App\Controllers;
 use App\Models\User;
 
 class LoginController{
+
     public function index()
     {
-        require('pages/login.php');
+        return view('auth.login');
     }
 
     public function login()

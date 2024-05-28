@@ -25,7 +25,7 @@
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="register.php" class="btn btn-dark">Register</a>
+                    <a href="register" class="btn btn-dark">Register</a>
                 </form>
             </div>
         </div>

@@ -7,6 +7,12 @@ class LoginController{
 
     public function index()
     {
+        $user = new User();
+        // $data = $user->fetchData('select * from users');
+        $data = $user->fetchData('select * from users where id = 2');
+        
+        echo '<pre>';
+        print_r($data);
         return view('auth.login');
     }
 

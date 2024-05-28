@@ -18,3 +18,8 @@ function view($file_path)
     throw new Exception("Page not Found $file");
     
 }
+
+function pageInclude($file_path)
+{
+    include(APP_ROOT.'/pages/'.$file_path);
+}
